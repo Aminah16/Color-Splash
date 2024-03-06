@@ -1,0 +1,27 @@
+# Ignore everything 
+
+*
+
+# But not these files...
+
+!.gitignore
+
+!/Assets/
+
+!/Assets/**
+
+!/ProjectSettings/
+
+!/ProjectSettings/**
+
+!/Packages/
+
+!/Packages/**
+
+!README.md
+
+# Ignore
+
+/Assets/_Development/
+
+/Assets/_Development/**
