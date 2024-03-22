@@ -1,27 +1,23 @@
-# Ignore everything 
 
-*
-
-# But not these files...
-
-!.gitignore
-
-!/Assets/
-
-!/Assets/**
-
-!/ProjectSettings/
-
-!/ProjectSettings/**
-
-!/Packages/
-
-!/Packages/**
-
-!README.md
 
 # Ignore
 
-/Assets/_Development/
+/Assets/Development
 
-/Assets/_Development/**
+/Library/
+
+/Logs/
+
+/obj/
+
+/Temp/
+
+/UserSettings/
+
+/.vs/
+
+.vsconfig
+
+Assembly-CSharp.csproj
+
+Color Splash.sln
