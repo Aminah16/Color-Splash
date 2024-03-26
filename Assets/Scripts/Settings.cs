@@ -8,15 +8,12 @@ public class Settings : MonoBehaviour
     public AudioSource clip;
     public Button button;
     public Button selected;
-    public Toggle toggle;
 
     private void Start()
     {
         button.onClick.AddListener(OnButtonClick);
         selected.Select();
-        toggle.isOn = true;
-        toggle.Select();
-        
+      
     }
 
     public void OnButtonClick()

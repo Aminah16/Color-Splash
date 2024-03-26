@@ -11,8 +11,19 @@ public class ImageColoringGirl : MonoBehaviour
     public Button button;
     public AudioSource clickSound;
     public float tolerance = 0.1f;
+    private static readonly Color BLACK_COLOR = Color.black;
 
+    public struct IntVector2
+    {
+        public int x;
+        public int y;
 
+        public IntVector2(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+    }
     private Stack<Color[]> colorChangeStack = new Stack<Color[]>();
 
     private void Start()
@@ -97,13 +108,13 @@ public class ImageColoringGirl : MonoBehaviour
 
         bool[,] visited = new bool[width, height];
 
-        Stack<Vector2Int> pixels = new Stack<Vector2Int>();
-        pixels.Push(new Vector2Int(startX, startY));
+        Stack<IntVector2> pixels = new Stack<IntVector2>();
+        pixels.Push(new IntVector2(startX, startY));
 
         Color[] pixelsArray = texture.GetPixels();
         while (pixels.Count > 0)
         {
-            Vector2Int pixel = pixels.Pop();
+            IntVector2 pixel = pixels.Pop();
             int x = pixel.x;
             int y = pixel.y;
 
@@ -113,7 +124,7 @@ public class ImageColoringGirl : MonoBehaviour
             int index = y * width + x;
             Color currentColor = pixelsArray[index];
             // Skip coloring if the pixel is black or already visited
-            if (ColorsMatch(currentColor, Color.black) || visited[x, y])
+            if (ColorsMatch(currentColor, BLACK_COLOR) || visited[x, y])
                 continue;
 
             // Apply fill color if the current pixel is the target color
@@ -122,10 +133,10 @@ public class ImageColoringGirl : MonoBehaviour
                 pixelsArray[index] = fillColor;
                 visited[x, y] = true;
 
-                pixels.Push(new Vector2Int(x + 1, y)); // Right
-                pixels.Push(new Vector2Int(x - 1, y)); // Left
-                pixels.Push(new Vector2Int(x, y + 1)); // Up
-                pixels.Push(new Vector2Int(x, y - 1)); // Down
+                pixels.Push(new IntVector2(x + 1, y)); // Right
+                pixels.Push(new IntVector2(x - 1, y)); // Left
+                pixels.Push(new IntVector2(x, y + 1)); // Up
+                pixels.Push(new IntVector2(x, y - 1)); // Down
             }
             // Handle anti-aliased edges
             else
@@ -137,10 +148,10 @@ public class ImageColoringGirl : MonoBehaviour
                     pixelsArray[index] = averageColor;
                     visited[x, y] = true;
 
-                    pixels.Push(new Vector2Int(x + 1, y)); // Right
-                    pixels.Push(new Vector2Int(x - 1, y)); // Left
-                    pixels.Push(new Vector2Int(x, y + 1)); // Up
-                    pixels.Push(new Vector2Int(x, y - 1)); // Down
+                    pixels.Push(new IntVector2(x + 1, y)); // Right
+                    pixels.Push(new IntVector2(x - 1, y)); // Left
+                    pixels.Push(new IntVector2(x, y + 1)); // Up
+                    pixels.Push(new IntVector2(x, y - 1)); // Down
                 }
             }
         }
