@@ -43,8 +43,8 @@ public static class ColorSelector
 
             // Add black color outline to the selected button
             outline = selectedButton.gameObject.AddComponent<Outline>();
-            outline.effectColor = Color.black; // Set outline color to black
-            outline.effectDistance = new Vector2(5f, -5f); // Adjust outline thickness and position as needed
+            outline.effectColor = Color.white; // Set outline color to black
+            outline.effectDistance = new Vector2(7f, -7f); // Increase the thickness to 10f or adjust as desired
         }
     }
 

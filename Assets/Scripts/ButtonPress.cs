@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,9 @@ public class ButtonPress : MonoBehaviour
     public GameObject objectToSetInactive;
     public AudioSource clip;
     public Button button;
-    
+
+
+
 
     private void Start()
     {
@@ -15,12 +18,19 @@ public class ButtonPress : MonoBehaviour
         Button button = GetComponent<Button>();
         button.onClick.AddListener(OnButtonClick);
     }
+ 
+  
 
     public void OnButtonClick()
     {
-            objectToSetActive.SetActive(true);
-            objectToSetInactive.SetActive(false);
             clip.Play();
-
+        StartCoroutine(Delayed());
     }
+    private IEnumerator Delayed()
+    {
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+        objectToSetActive.SetActive(true);
+        objectToSetInactive.SetActive(false);
+    }
+
 }

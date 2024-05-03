@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Post processing layer
   - 
   - 
   - 
@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 341429289
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Bird
+    uniqueID: 588038449
+    locked: 0
+  - name: patricle
+    uniqueID: 1598533779
     locked: 0

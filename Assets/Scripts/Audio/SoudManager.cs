@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class SoudManager : MonoBehaviour
 {
     [SerializeField] Image soundIcon;
+    [SerializeField] Image soundIcon2nd;
     [SerializeField] Image soundOffIcon;
+    [SerializeField] Image soundOffIcon2nd;
     private bool muted = false;
-    // Start is called before the first frame update
+
     void Start()
     {
         if (!PlayerPrefs.HasKey("muted"))
@@ -41,15 +43,19 @@ public class SoudManager : MonoBehaviour
 
     private void UpdateButtonIcon()
     {
-        if ( muted== false)
+        if (muted== false)
         {
             soundIcon.enabled = true;
+            soundIcon2nd.enabled = true;
             soundOffIcon.enabled = false;
+            soundOffIcon2nd.enabled = false;
         }
         else
         {
             soundIcon.enabled = false;
+            soundIcon2nd.enabled = false;
             soundOffIcon.enabled = true;
+            soundOffIcon2nd.enabled = true;
         }
     }
     private void Load()
